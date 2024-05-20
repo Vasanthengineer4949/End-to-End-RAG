@@ -18,7 +18,7 @@ import asyncio
 load_dotenv(find_dotenv())
 
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGSMITH_API_KEY")
+os.environ["LANGCHAIN_API_KEY"] = "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"
 os.environ['LANGCHAIN_PROJECT'] = 'end-to-end-rag'
 
 class RAG:
@@ -35,10 +35,10 @@ class RAG:
             ),
         )
         self.embeddings = OpenAIEmbeddings(
-            api_key=os.getenv("OPENAI_API_KEY"), model="text-embedding-3-small"
+            api_key="sk-proj-CgZjRIeTsKoZIZKdGfhYT3BlbkFJCCYlYZoNGKal63B2nzAf", model="text-embedding-3-small"
         )
         self.groq_llm = ChatGroq(
-            api_key=os.getenv("GROQ_API_KEY"), 
+            api_key="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", 
             model="llama3-70b-8192", 
             temperature=0
         )
@@ -50,11 +50,11 @@ class RAG:
         self.vectorstore = PineconeVectorStore(
             index_name=self.vectorstore_index_name,
             embedding=self.embeddings,
-            pinecone_api_key=os.getenv("PINECONE_API_KEY")
+            pinecone_api_key="2defc39d-ff30-4384-8772-9965d1b7e931"
         )
         self.rag_prompt = hub.pull(
             "rlm/rag-prompt", 
-            api_key=os.getenv("LANGSMITH_API_KEY")
+            api_key="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"
         )
         config = RailsConfig.from_path("./config")
 
@@ -62,7 +62,7 @@ class RAG:
 
 
     def create_pinecone_index(self, vectorstore_index_name):
-        pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))  
+        pc = Pinecone(api_key="2defc39d-ff30-4384-8772-9965d1b7e931")  
         spec = ServerlessSpec(cloud='aws', region='us-east-1')  
         if vectorstore_index_name in pc.list_indexes().names():  
             pc.delete_index(vectorstore_index_name)  
