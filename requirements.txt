@@ -278,8 +278,8 @@ python-multipart==0.0.9
 pytils==0.4.1
 pytube==15.0.0
 pytz==2024.1
-pywin32==306
-pywin32-ctypes==0.2.2
+pywin32
+pywin32-ctypes
 PyYAML==6.0.1
 pyzmq==25.1.2
 quickfs==0.1.1
